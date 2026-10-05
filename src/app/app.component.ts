@@ -14,4 +14,8 @@ export class AppComponent {
     onCardClick(course:Course) {
         console.log('bubbled........', course)
     }
+
+    trackCourse(index: number, course:Course){
+        return course.id
+    }
 }
