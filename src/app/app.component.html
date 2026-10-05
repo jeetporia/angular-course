@@ -22,8 +22,8 @@
     </div>
 </div>
 
-<div class="courses">
-    @for(course of  (courses | slice:0:3); track trackCourse; let index = $index;
+<div class="courses" #courseContainer>
+    <!-- @for(course of  (courses | slice:0:3); track trackCourse; let index = $index;
     let count = $count;
     let first = $first;
     let last = $last;
@@ -36,7 +36,10 @@
     }
     @empty {
     <h1> No Course found !!!</h1>
-    }
+    } -->
+
+    <course-card [course]="courses[0]" (courseSelected)="onCardClick($event)"></course-card>
+    <course-card #card2 [course]="courses[1]" (courseSelected)="onCardClick($event)"></course-card>
 
 
 </div>

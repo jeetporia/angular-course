@@ -11,7 +11,7 @@ import { NgStyle } from "@angular/common";
 })
 export class CourseCardComponent {
   @Input({ required: true }) course!: Course;
-  @Input({ required: true }) index: Number;
+  @Input({ required: false }) index: Number;
   @Output() courseSelected = new EventEmitter<Course>();
 
   onCourseViewed() {
