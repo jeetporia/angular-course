@@ -2,9 +2,28 @@
     <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
 
+<div class="demo">
+    <div> Start Date :: {{ startDate | date: 'MMM/dd/yy' }}</div>
+    <hr>
+    <div> {{ title | uppercase }} </div>
+    <div> {{ title | lowercase }} </div>
+    <div> {{ title | titlecase }} </div>
+    <hr>
+    <div> {{ price | number: '3.3-5' }}</div>
+    <div> {{ price | currency }}</div>
+    <div> {{ price | currency: 'INR' }}</div>
+    <hr>
+    <div>{{ rate | percent}}</div>
+    <hr>
+    <div> {{ courses | json }} </div>
+    <hr>
+    <div *ngFor="let pair of courses | keyvalue">
+        {{pair.key + ' ' + pair.value}}
+    </div>
+</div>
 
 <div class="courses">
-    @for(course of courses; track trackCourse; let index = $index;
+    @for(course of  (courses | slice:0:3); track trackCourse; let index = $index;
     let count = $count;
     let first = $first;
     let last = $last;
