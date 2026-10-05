@@ -12,12 +12,8 @@
     let odd = $odd
     ) {
     <h2> Count {{ count }}</h2>
-    <course-card [index]="index" [course]="course" 
-    [class.is-first]="first"
-    [class.is-last]="last"
-    [class.is-even]="even"
-    [class.is-odd]="odd"
-    (courseSelected)="onCardClick($event)"></course-card>
+    <course-card [index]="index" [course]="course" [class.is-first]="first" [class.is-last]="last"
+        [class.is-even]="even" [class.is-odd]="odd" (courseSelected)="onCardClick($event)"></course-card>
     }
     @empty {
     <h1> No Course found !!!</h1>
@@ -28,5 +24,5 @@
 
 
 <!-- @for requires track to uniquely identify the item so that when we are adding/removing/updating any item it will update only that part of the DOM element -->
- <!-- if we don't have unique thing for track we can use $index but track is important and mandatory in newer version of Angular. -->
+<!-- if we don't have unique thing for track we can use $index but track is important and mandatory in newer version of Angular. -->
 <!-- ng generate @angular/core:control-flow : covert old way of structural directive to new way-->
