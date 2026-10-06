@@ -1,37 +1,50 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  ViewChild,
+} from "@angular/core";
 
 @Directive({
-  selector: '[highlighted]',
+  selector: "[highlighted]",
+  exportAs: "HL",
 })
 export class HighlightedDirective {
-  
-  @Input('highlighted')
+  @Input("highlighted")
   isHighlighted = false;
-  
+
   @Output()
   toggleHighlight = new EventEmitter<boolean>();
 
   constructor() {
-    console.log(' Directive created ')
+    console.log(" Directive created ");
   }
 
-  @HostBinding('class.highlighted')
+  @HostBinding("class.highlighted")
   get cssClass() {
-    return this.isHighlighted
+    return this.isHighlighted;
   }
 
-
-  @HostListener('mouseover', ['$event'])
+  @HostListener("mouseover", ["$event"])
   mouseover(event) {
-    console.log(event)
+    console.log(event);
     this.isHighlighted = true;
-    this.toggleHighlight.emit(this.isHighlighted)
+    this.toggleHighlight.emit(this.isHighlighted);
   }
 
-  @HostListener('mouseleave')
+  @HostListener("mouseleave")
   mouseleave() {
     this.isHighlighted = false;
-     this.toggleHighlight.emit(this.isHighlighted)
+    this.toggleHighlight.emit(this.isHighlighted);
   }
 
+  toggle() {
+    this.isHighlighted = !this.isHighlighted;
+    this.toggleHighlight.emit(this.isHighlighted);
+  }
 }
+
+// we can export some functionality / fuction to the parent component or component where we are consuming the directive
