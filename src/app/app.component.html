@@ -9,7 +9,7 @@
 
   @if (courses[0]; as course) {
     <div class="courses">
-      <course-card
+      <course-card [highlighted]="true"
         (courseSelected)="onCourseSelected($event)"
         [course]="course">
       <course-image [src]="course.iconUrl"></course-image>
