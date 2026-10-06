@@ -20,14 +20,9 @@ export class CourseCardComponent {
 
   cardClasses() {
     if (this.course.category === "BEGINNER") {
-      // return ['beginner','course-card']
       return "beginner course-card";
     }
     return ["course-card"];
-    // return {
-    //   'beginner': this.course.category === 'BEGINNER',
-    //   'course-card': true
-    // }
   }
 
   cardStyles() {

@@ -2,26 +2,6 @@
     <img class="logo" src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 </div>
 
-<div class="demo">
-    <div> Start Date :: {{ startDate | date: 'MMM/dd/yy' }}</div>
-    <hr>
-    <div> {{ title | uppercase }} </div>
-    <div> {{ title | lowercase }} </div>
-    <div> {{ title | titlecase }} </div>
-    <hr>
-    <div> {{ price | number: '3.3-5' }}</div>
-    <div> {{ price | currency }}</div>
-    <div> {{ price | currency: 'INR' }}</div>
-    <hr>
-    <div>{{ rate | percent}}</div>
-    <hr>
-    <div> {{ courses | json }} </div>
-    <hr>
-    <div *ngFor="let pair of courses | keyvalue">
-        {{pair.key + ' ' + pair.value}}
-    </div>
-</div>
-
 <div class="courses" #courseContainer>
     <!-- @for(course of  (courses | slice:0:3); track trackCourse; let index = $index;
     let count = $count;
@@ -38,8 +18,16 @@
     <h1> No Course found !!!</h1>
     } -->
 
-    <course-card [course]="courses[0]" (courseSelected)="onCardClick($event)"></course-card>
-    <course-card #card2 [course]="courses[1]" (courseSelected)="onCardClick($event)"></course-card>
+    <course-card [course]="courses[0]" (courseSelected)="onCardClick($event)">
+         <div class="course-title">
+           From parent {{ courses[0].description }}
+        </div>
+    </course-card>
+
+    <course-card [course]="courses[1]" (courseSelected)="onCardClick($event)">
+        <h2> Something else for another component </h2>
+        <h2> Something else on another line </h2>
+    </course-card>
 
 
 </div>

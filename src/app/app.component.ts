@@ -1,4 +1,11 @@
-import { Component, ChangeDetectionStrategy, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ViewChild,
+  ElementRef,
+  ViewChildren,
+  QueryList,
+} from "@angular/core";
 import { COURSES } from "../db-data";
 import { Course } from "./model/course";
 import { CourseCardComponent } from "./course-card/course-card.component";
@@ -12,25 +19,23 @@ import { CourseCardComponent } from "./course-card/course-card.component";
 })
 export class AppComponent {
   courses = [...COURSES];
+  // for the for loop and for the all the component which we are repeating we have to use this
+  //   @ViewChildren(CourseCardComponent, { read: ElementRef })
+  //   cards: QueryList<ElementRef>;
 
   @ViewChild(CourseCardComponent)
   card: CourseCardComponent;
 
-  @ViewChild('card2')
-  card2 : CourseCardComponent;
+  @ViewChild("card2")
+  card2: CourseCardComponent;
 
-  @ViewChild('courseContainer')
-  coursParent : ElementRef;
+  @ViewChild("courseContainer")
+  coursParent: ElementRef;
 
-  startDate = new Date(2000, 2, 23);
-  title = this.courses[0].description;
-  rate = 0.85;
-
-  price = 999;
   onCardClick(course: Course) {
     console.log(this.card);
-    console.log(this.card2)
-    console.log(this.coursParent)
+    console.log(this.card2);
+    console.log(this.coursParent);
   }
 
   trackCourse(index: number, course: Course) {

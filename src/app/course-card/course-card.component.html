@@ -1,16 +1,8 @@
 <ng-container>
     <div [ngClass]="cardClasses()">
+        <!-- for select we can use css selector and also the tag -->
+        <ng-content select=".course-title"></ng-content>
 
-        <!-- style directly but good if we have only few CSS to apply -->
-        <!-- <div class="course-title" [style.text-decoration]=" 'underline' ">
-        {{ index }} {{ course.description }}
-    </div>
-    [ngStyle]=" {'text-decoration' : 'underline'} "
-    
-    -->
-        <div class="course-title" [ngStyle]="cardStyles()">
-            {{ index }} {{ course.description }}
-        </div>
         @if(course.id === 1) {
         <h2> Course with Id 1 detected ... </h2>
         }
