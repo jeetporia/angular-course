@@ -7,7 +7,7 @@ import {CourseCardComponent} from './course-card/course-card.component';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    changeDetection: ChangeDetectionStrategy.Eager,
+    changeDetection: ChangeDetectionStrategy.Default,
     standalone: false
 })
 export class AppComponent implements AfterViewInit {
@@ -29,6 +29,10 @@ export class AppComponent implements AfterViewInit {
 
     onCourseSelected(course:Course) {
 
+    }
+
+    onToggle(isHighlighted: boolean) {
+        console.log(' Working ... parent class ', isHighlighted)
     }
 
 }

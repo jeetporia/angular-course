@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[highlighted]',
@@ -7,37 +7,31 @@ export class HighlightedDirective {
   
   @Input('highlighted')
   isHighlighted = false;
+  
+  @Output()
+  toggleHighlight = new EventEmitter<boolean>();
 
   constructor() {
     console.log(' Directive created ')
   }
-  // @HostBinding('className')
-  // get cssClasses() {
-  //   return 'highlighted';
-  // }
-
-  // @HostBinding('class.highlighted')
-  // get cssClass() {
-  //   return true;
-  // }
-
-  // @HostBinding('style.border')
-  // get cssClass() {
-  //   return '1px solid black';
-  // }
 
   @HostBinding('class.highlighted')
   get cssClass() {
     return this.isHighlighted
   }
 
-  @HostBinding('attr.disabled')
-  get disabled() {
-    return true;
+
+  @HostListener('mouseover', ['$event'])
+  mouseover(event) {
+    console.log(event)
+    this.isHighlighted = true;
+    this.toggleHighlight.emit(this.isHighlighted)
   }
 
+  @HostListener('mouseleave')
+  mouseleave() {
+    this.isHighlighted = false;
+     this.toggleHighlight.emit(this.isHighlighted)
+  }
 
 }
-
-// if we want to use different name for the input we can in that case we have to use highlighted [color] = 'red' in the consumer side
-// for hostBinding we can use any valid HTML attribute and property, if we use something new browser will crash and won't work
