@@ -7,7 +7,7 @@
 
   <div>
 
-    <div class="courses">
+    <div class="courses" *ngIf="courses$ | async as courses">
 
       @for (course of courses; track course) {
         <course-card
@@ -21,6 +21,8 @@
 
 </div>
 
+
+<!-- in order to prevent memory links we should use the async pipes we can use it, because it will unsubscribe automatically  -->
 
 
 
